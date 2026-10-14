@@ -1,4 +1,3 @@
-
 const opportunities = [
   {
     id: 101,
@@ -12,7 +11,7 @@ const opportunities = [
     deadline: "2026-10-20",
     posted: 1,
     skills: "civil engineering IT computer science electronics data science",
-    description: "Explore internship opportunities related to national highway projects. Check the official notice for eligibility, available disciplines and dates.",
+    description: "Explore internships related to national highway projects. Check the official notice for eligibility, disciplines and dates.",
     link: "https://internshipsatnhai.digitalindiacorporation.in/",
     featured: true
   },
@@ -28,7 +27,7 @@ const opportunities = [
     deadline: "2026-10-31",
     posted: 2,
     skills: "pharmacy medical dental nursing pharmacovigilance health sciences",
-    description: "Explore pharmacovigilance experience. This programme is intended for specified healthcare and related academic backgrounds.",
+    description: "Explore pharmacovigilance experience. Eligibility depends on the academic background specified in the official notice.",
     link: "https://ipc.gov.in/news-highlights/1522-applications-open-pvpi-internship-programme-2026.html",
     featured: true
   },
@@ -44,7 +43,7 @@ const opportunities = [
     deadline: "2026-10-31",
     posted: 3,
     skills: "science technology remote sensing geospatial research",
-    description: "Explore research and project experience in remote sensing and related disciplines. Verify the current application window and eligibility.",
+    description: "Explore research and project experience in remote sensing. Verify the current application window and eligibility.",
     link: "https://www.iirs.gov.in/content/external-student-internship/",
     featured: true
   },
@@ -60,7 +59,7 @@ const opportunities = [
     deadline: "2026-10-31",
     posted: 4,
     skills: "undergraduate education financial aid merit welfare students",
-    description: "Browse government scholarship schemes for eligible students. Funding, documents and deadlines differ by scheme.",
+    description: "Browse government scholarship schemes for eligible students. Funding, documents and deadlines vary by scheme.",
     link: "https://scholarships.gov.in/All-Scholarships",
     featured: true
   },
@@ -75,8 +74,8 @@ const opportunities = [
     reward: "Check official notice",
     deadline: "2026-10-31",
     posted: 5,
-    skills: "disaster management environment social science engineering psychology geography research",
-    description: "Explore disaster management and research opportunities. Confirm the current application cycle and eligibility on the official website.",
+    skills: "disaster management environment engineering psychology geography research",
+    description: "Explore disaster management and research opportunities. Confirm the current application cycle and eligibility.",
     link: "https://www.nidm.gov.in/internship.asp",
     featured: false
   },
@@ -89,11 +88,11 @@ const opportunities = [
     mode: "Online",
     location: "India",
     reward: "Check official guidelines",
-    deadline: "2026-12-31",
+    deadline: "",
     posted: 6,
     skills: "environment climate sustainability forestry research policy",
-    description: "Explore environment and sustainability-related internship opportunities. Confirm the latest application window and eligibility before applying.",
-    link: "https://portals.moef.gov.in/internship/",
+    description: "Explore environment and sustainability-related internship opportunities. Check the latest official guidelines.",
+    link: "https://moef.gov.in/",
     featured: false
   },
   {
@@ -108,7 +107,7 @@ const opportunities = [
     deadline: "",
     posted: 7,
     skills: "jobs freshers technology finance marketing healthcare business government",
-    description: "Discover job vacancies across sectors, experience levels and locations. Open individual listings to check application deadlines.",
+    description: "Discover vacancies across sectors and experience levels. Open individual listings to check deadlines and eligibility.",
     link: "https://www.ncs.gov.in/",
     featured: true
   },
@@ -124,7 +123,7 @@ const opportunities = [
     deadline: "",
     posted: 8,
     skills: "web development design marketing business finance content writing",
-    description: "Search for technical and non-technical internships, including opportunities for students and freshers.",
+    description: "Search technical and non-technical internships, including opportunities for students and freshers.",
     link: "https://internshala.com/",
     featured: true
   },
@@ -140,7 +139,7 @@ const opportunities = [
     deadline: "",
     posted: 9,
     skills: "hackathon coding AI design innovation startup students",
-    description: "Find hackathons and innovation challenges. Check each event's registration deadline, eligibility and participation rules.",
+    description: "Find hackathons and innovation challenges. Check each event's deadline and participation rules.",
     link: "https://devpost.com/",
     featured: false
   },
@@ -152,7 +151,7 @@ const opportunities = [
     icon: "📚",
     mode: "Online",
     location: "Global",
-    reward: "Free learning resources available",
+    reward: "Free learning resources",
     deadline: "",
     posted: 10,
     skills: "programming AI cloud data cybersecurity beginner",
@@ -172,7 +171,7 @@ const opportunities = [
     deadline: "",
     posted: 11,
     skills: "remote jobs freshers developer designer analyst marketing",
-    description: "Search jobs by role, location, experience level and work arrangement. Review the employer's original listing before applying.",
+    description: "Search jobs by role, location, experience level and work arrangement. Review each original employer listing.",
     link: "https://www.linkedin.com/jobs/",
     featured: true
   },
@@ -188,7 +187,7 @@ const opportunities = [
     deadline: "",
     posted: 12,
     skills: "research biology science life sciences biotechnology",
-    description: "Explore life-science research resources and opportunities. Check each programme for current openings and eligibility.",
+    description: "Explore life-science research resources and opportunities. Check programmes for current openings.",
     link: "https://www.indiabioscience.org/",
     featured: false
   },
@@ -236,7 +235,7 @@ const opportunities = [
     deadline: "",
     posted: 15,
     skills: "government jobs public sector recruitment India graduates",
-    description: "Explore government recruitment notices across different departments and qualifications.",
+    description: "Explore government recruitment notices across departments and qualifications.",
     link: "https://www.employmentnews.gov.in/",
     featured: false
   },
@@ -252,16 +251,12 @@ const opportunities = [
     deadline: "",
     posted: 16,
     skills: "innovation students essay design ideas competition India",
-    description: "Discover public challenges, creative contests and participation opportunities. Check whether each challenge is currently open.",
+    description: "Discover public challenges, creative contests and participation opportunities. Check whether each challenge is open.",
     link: "https://www.mygov.in/",
     featured: false
   }
 ];
 
-// Important:
-// The first six records contain manually entered dates that must be
-// verified on the official sources. Other records are discovery portals,
-// not individual vacancies with confirmed deadlines.
 
 const grid = document.getElementById("opportunityGrid");
 const savedGrid = document.getElementById("savedGrid");
@@ -275,10 +270,12 @@ const savedEmpty = document.getElementById("savedEmpty");
 const resultsCount = document.getElementById("resultsCount");
 const activeCategory = document.getElementById("activeCategory");
 const toast = document.getElementById("toast");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
 let selectedCategory = "All";
-let savedIds = loadSaved();
 let toastTimer;
+
 
 function loadSaved() {
   try {
@@ -288,13 +285,16 @@ function loadSaved() {
 
     if (!Array.isArray(data)) return [];
 
-    return data.filter(id =>
-      Number.isInteger(id) && opportunities.some(item => item.id === id)
+    return [...new Set(data)].filter(id =>
+      Number.isInteger(id) &&
+      opportunities.some(item => item.id === id)
     );
   } catch {
     return [];
   }
 }
+
+let savedIds = loadSaved();
 
 function saveSaved() {
   try {
@@ -302,10 +302,13 @@ function saveSaved() {
       "opportunityhub-saved",
       JSON.stringify(savedIds)
     );
+    return true;
   } catch {
-    showToast("Browser storage is unavailable.");
+    showToast("Browser storage is unavailable. Your changes may not persist.");
+    return false;
   }
 }
+
 
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, char => ({
@@ -316,6 +319,7 @@ function escapeHTML(value) {
     "'": "&#39;"
   })[char]);
 }
+
 
 function formatDate(date) {
   if (!date) return "Check official website";
@@ -336,14 +340,15 @@ function formatDate(date) {
 function hasPassedDeadline(item) {
   if (!item.deadline) return false;
 
-  const endOfDeadline = new Date(item.deadline + "T23:59:59");
-  return endOfDeadline < new Date();
+  const deadline = new Date(item.deadline + "T23:59:59");
+  return deadline < new Date();
 }
+
 
 function getFilteredItems() {
   const query = inlineSearch.value.trim().toLowerCase();
 
-  let items = opportunities.filter(item => {
+  const items = opportunities.filter(item => {
     const searchable = [
       item.title,
       item.org,
@@ -356,17 +361,23 @@ function getFilteredItems() {
     ].join(" ").toLowerCase();
 
     const categoryMatches =
-      selectedCategory === "All" || item.type === selectedCategory;
+      selectedCategory === "All" ||
+      item.type === selectedCategory;
 
     const typeMatches =
-      typeFilter.value === "All" || item.type === typeFilter.value;
+      typeFilter.value === "All" ||
+      item.type === typeFilter.value;
 
     const modeMatches =
-      modeFilter.value === "All" || item.mode === modeFilter.value;
+      modeFilter.value === "All" ||
+      item.mode === modeFilter.value;
 
     const searchMatches = searchable.includes(query);
 
-    return categoryMatches && typeMatches && modeMatches && searchMatches;
+    return categoryMatches &&
+      typeMatches &&
+      modeMatches &&
+      searchMatches;
   });
 
   if (sortFilter.value === "deadline") {
@@ -396,25 +407,20 @@ function getFilteredItems() {
   return items;
 }
 
+
 function createCard(item) {
   const saved = savedIds.includes(item.id);
   const expired = hasPassedDeadline(item);
 
-  let deadlineText = item.deadline
-    ? formatDate(item.deadline)
-    : "Check official website";
+  const deadlineText = expired
+    ? "Deadline passed"
+    : formatDate(item.deadline);
 
-  if (expired) {
-    deadlineText = "Deadline passed";
-  }
-
-  let actionLabel = "Explore ↗";
-
-  if (expired) {
-    actionLabel = "Deadline passed";
-  } else if (!item.deadline) {
-    actionLabel = "View listings ↗";
-  }
+  const actionLabel = expired
+    ? "Deadline passed"
+    : item.deadline
+      ? "Explore ↗"
+      : "View listings ↗";
 
   return `
     <article class="op-card">
@@ -423,6 +429,7 @@ function createCard(item) {
 
         <button
           class="save-btn ${saved ? "saved" : ""}"
+          type="button"
           data-save="${item.id}"
           aria-label="${saved ? "Remove saved opportunity" : "Save opportunity"}"
           aria-pressed="${saved}"
@@ -450,18 +457,22 @@ function createCard(item) {
           <strong>${escapeHTML(deadlineText)}</strong>
         </div>
 
-        <a
-          class="apply-btn ${expired ? "disabled" : ""}"
-          href="${escapeHTML(item.link)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          ${expired ? 'aria-disabled="true" tabindex="-1"' : ""}>
-          ${actionLabel}
-        </a>
+        ${
+          expired
+            ? `<span class="apply-btn disabled" aria-disabled="true">Closed</span>`
+            : `<a
+                class="apply-btn"
+                href="${escapeHTML(item.link)}"
+                target="_blank"
+                rel="noopener noreferrer">
+                ${actionLabel}
+              </a>`
+        }
       </div>
     </article>
   `;
 }
+
 
 function renderOpportunities() {
   const items = getFilteredItems();
@@ -477,20 +488,31 @@ function renderOpportunities() {
     ? "Showing all opportunities"
     : `Showing ${selectedCategory.toLowerCase()} opportunities`;
 
-  document.getElementById("totalStat").textContent = opportunities.length;
+  document.getElementById("totalStat").textContent =
+    opportunities.length;
 
   renderSaved();
 }
 
+
 function renderSaved() {
-  const items = opportunities.filter(item => savedIds.includes(item.id));
+  const items = opportunities.filter(item =>
+    savedIds.includes(item.id)
+  );
 
   savedGrid.innerHTML = items.map(createCard).join("");
   savedEmpty.hidden = items.length > 0;
 
-  document.getElementById("savedNavCount").textContent = items.length;
-  document.getElementById("savedHeadingCount").textContent = `(${items.length})`;
+  document.getElementById("savedNavCount").textContent =
+    items.length;
+
+  document.getElementById("savedHeadingCount").textContent =
+    `(${items.length})`;
+
+  document.getElementById("statSaved").textContent =
+    items.length;
 }
+
 
 function setCategory(category) {
   selectedCategory = category;
@@ -506,28 +528,16 @@ function setCategory(category) {
   renderOpportunities();
 }
 
+
 function syncSearch(value) {
   searchInput.value = value;
   inlineSearch.value = value;
   renderOpportunities();
 }
 
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2400);
-}
-
 document.getElementById("searchForm").addEventListener("submit", event => {
   event.preventDefault();
-
   syncSearch(searchInput.value);
-
   document.getElementById("explore").scrollIntoView({
     behavior: "smooth"
   });
@@ -542,6 +552,7 @@ inlineSearch.addEventListener("input", () => {
   searchInput.value = inlineSearch.value;
   renderOpportunities();
 });
+
 
 typeFilter.addEventListener("change", () => {
   setCategory(typeFilter.value);
@@ -560,31 +571,31 @@ document.querySelectorAll(".category-card").forEach(button => {
   });
 });
 
+
 document.querySelectorAll("[data-search]").forEach(button => {
   button.addEventListener("click", () => {
     const term = button.dataset.search;
 
+    modeFilter.value = "All";
+    sortFilter.value = "featured";
+
     if (term === "internship") {
       setCategory("Internship");
       syncSearch("");
-      modeFilter.value = "All";
     } else if (term === "scholarship") {
       setCategory("Scholarship");
       syncSearch("");
-      modeFilter.value = "All";
     } else {
       setCategory("All");
       syncSearch("remote");
-      modeFilter.value = "All";
     }
-
-    renderOpportunities();
 
     document.getElementById("explore").scrollIntoView({
       behavior: "smooth"
     });
   });
 });
+
 
 document.addEventListener("click", event => {
   const button = event.target.closest("[data-save]");
@@ -595,18 +606,17 @@ document.addEventListener("click", event => {
 
   if (savedIds.includes(id)) {
     savedIds = savedIds.filter(savedId => savedId !== id);
+    saveSaved();
     showToast("Removed from your saved opportunities.");
   } else {
     savedIds.push(id);
+    saveSaved();
     showToast("Opportunity saved to your shortlist!");
   }
 
-  saveSaved();
   renderOpportunities();
 });
 
-document.getElementById("clearFilters").addEventListener("click", resetFilters);
-document.getElementById("resetSearch").addEventListener("click", resetFilters);
 
 function resetFilters() {
   selectedCategory = "All";
@@ -623,5 +633,46 @@ function resetFilters() {
     );
   });
 }
+
+document.getElementById("clearFilters")
+  .addEventListener("click", resetFilters);
+
+document.getElementById("resetSearch")
+  .addEventListener("click", resetFilters);
+
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation" : "Toggle navigation"
+  );
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+
+document.getElementById("currentYear").textContent =
+  new Date().getFullYear();
+
 
 renderOpportunities();
